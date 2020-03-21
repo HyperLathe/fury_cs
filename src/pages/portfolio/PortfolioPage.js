@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-
 import NavGrid from "../components/NavGrid";
 
 const Content = styled.div`
@@ -10,6 +9,10 @@ const Content = styled.div`
 
 const BodyContent = styled.div` 
   
+`;
+
+const ImageGrid = styled.div ` 
+
 `;
 
 const BodyLinks = styled.div` 
@@ -33,11 +36,21 @@ const Tags = styled.div `
 
 
 
-function PortfolioPage({ title, body, links, tags }) {
-  console.log(body);
+function PortfolioPage({ id, title, imgs, body, links, tags }) {
+  console.log(id, imgs);
+
+  const imageArray = [...Array(imgs)].map((_, i) => {
+    return (<img src={require("../../img/portfolio_imgs/" + id + "/" + (i + 1) + ".jpg" )} alt="test" />);
+  });
+
   return (
     <Content>
       <h2>{title}</h2>
+
+      <ImageGrid>
+      {imageArray}
+      </ImageGrid>
+
       <BodyContent>
         {body.map((value) => {
           return <p dangerouslySetInnerHTML={{ __html: value }} />
@@ -46,8 +59,7 @@ function PortfolioPage({ title, body, links, tags }) {
           <BodyLinks>
             <h3>Websites</h3>
             {links.map((value) => {
-              return <a href={value.link} target="_blank">{value.label}</a>
-              // return <a dangerouslySetInnerHTML={{ __html: value }} />
+              return <a href={value.link} target="_blank" rel="noopener noreferrer">{value.label}</a>
             })}
           </BodyLinks> : ''}
           <Tags>
@@ -56,7 +68,9 @@ function PortfolioPage({ title, body, links, tags }) {
             })}
           </Tags>
       </BodyContent>
+
       <NavGrid />
+
     </Content>
   );
 }

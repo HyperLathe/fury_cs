@@ -1,12 +1,10 @@
 import React from "react";
 import styled from "styled-components/macro";
-import PageHeader from "./components/PageHeader";
 import NavGrid from "./components/NavGrid";
 
 const PageContent = styled.div `
-  img {
-    max-width: 100%;
-  }
+  width: 100%;
+  height: 100%;
 `;
 
 
@@ -14,7 +12,6 @@ const PageContent = styled.div `
 function Home(props) {
   return (
     <PageContent>
-      <PageHeader />
       <NavGrid />
     </PageContent>
 

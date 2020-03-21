@@ -17,7 +17,7 @@ const NavButton = styled.button `
       width: 27px;
       height: 3px;
       display: block;
-      background: #fff;
+      background: #000;
       margin: 0px 0px 6px 0px;
       transition: all 0.2s linear;
       opacity: 1;

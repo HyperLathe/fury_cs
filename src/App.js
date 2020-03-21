@@ -21,7 +21,7 @@ const Main = styled.div`
   transition: all 0.4s ease;
   position: relative;
     &.nav-open {
-      /* margin-left: -200px; */
+      margin-left: -200px;
     }
 `;
 
@@ -66,10 +66,10 @@ const Logo = styled.h1`
 const Content = styled.div`
 	margin-top: 60px;
 	width: 100%;
-	padding: 10px 15px;
+	padding: 10px 0px;
 `;
 
-const MobileNav = styled.div `
+const MobileExtraLinks = styled.div `
 	display: none;
 		@media screen and (max-width: 768px) {
 			display: block;
@@ -97,11 +97,12 @@ const App = () => {
 					<Nav onClick={toggle} >
 						<NavLink exact to="/">Home</NavLink>
 						<NavLink to="/about">About</NavLink>
-						<MobileNav>
+					<MobileExtraLinks onClick={toggle}>
+						<p>Portfolio</p>
 							{Object.entries(PortfolioData).map(([key, value]) => {
 								return (<NavLink key={key} to={"/portfolio/" + value.id}>{value.nav}</NavLink>)
 							})}
-						</MobileNav>
+						</MobileExtraLinks>
 					</Nav>
 				</Header>
 				<Content onClick={closeNav}>
