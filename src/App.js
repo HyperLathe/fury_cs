@@ -122,7 +122,8 @@ const Logo = styled.h1`
 
 const Content = styled.div`
 	width: 100%;
-	padding: 70px 0px 10px 0px;
+	padding: 60px 0px 10px 0px;
+	height: 100vh;
 `;
 
 const MobileExtraLinks = styled.div `

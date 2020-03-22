@@ -7,10 +7,10 @@ const NavGridContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  height: 100%;
   align-items: flex-start;
-  align-content: space-evenly;
+  align-content: stretch;
     a {
-      display: flex;
       width: 33.33%;
       justify-content: center;
       padding: 4%;
