@@ -7,16 +7,15 @@ const NavGridContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  height: calc(100vh - 90px);
-  align-items: center;
+  align-items: flex-start;
   align-content: space-evenly;
     a {
       display: flex;
       width: 33.33%;
       justify-content: center;
+      padding: 4%;
         img {
-          width: 80px;
-          height: 80px;
+          max-width: 100%;
         }
     }
 `;
@@ -26,7 +25,7 @@ function NavGrid(props) {
   return (
     <NavGridContainer>
       {Object.entries(PortfolioData).map(([key, value]) => {
-        return (<NavLink key={key} to={"/portfolio/" + value.id}><img src={require('../../img/icons/' + value.id + '.jpg')} alt={value.title} /></NavLink>)
+        return (<NavLink key={key} to={"/portfolio/" + value.id}><img src={require('../../img/icons/' + value.id + '.png')} alt={value.title} /></NavLink>)
       })}
     </NavGridContainer>
   );

@@ -33,10 +33,14 @@ const Main = styled.div`
 `;
 
 const Header = styled.header`
-  width: 100%;
-  text-align: center;
-  padding: 5px 0px 8px 0px;
-  margin: 0;
+    width: 100%;
+    text-align: center;
+    padding: 5px 0px 8px 0px;
+    margin: 0;
+    height: 60px;
+    position: fixed;
+    left: 0;
+    background: #fff;
 		@media screen and (min-width: 768px) {
 			border-bottom: 1px solid #b2b2b2;
 			height: 120px;
@@ -58,6 +62,7 @@ const Nav = styled.nav`
 	margin-right: -200px;
 	text-align: right;
 	transition: all 0.4s ease;
+	display: flex;
 	flex-direction: column;
 	transform: scaleX(0);
 	transform-origin: right;
@@ -70,6 +75,7 @@ const Nav = styled.nav`
 			font-size: 0.8rem;
 			text-decoration: none;
 			color: #b4b4b4;
+			margin-bottom: 5px;
 				&:hover,
 				&.active {
 					color: #000;
@@ -116,14 +122,22 @@ const Logo = styled.h1`
 
 const Content = styled.div`
 	width: 100%;
-	padding: 10px 0px;
+	padding: 70px 0px 10px 0px;
 `;
 
 const MobileExtraLinks = styled.div `
-	display: none;
-		@media screen and (max-width: 768px) {
-			display: block;
-		}
+	display: flex;
+	flex-direction: column;
+	p {
+		margin: 15px 0px 7px 0px;
+		font-size: 0.8rem;
+	}
+	a {
+		margin-bottom: 5px;
+	}
+		@media screen and (min-width: 768px) {
+			display: none;	
+	}
 `;
 
 
@@ -148,7 +162,7 @@ const App = () => {
 						<NavLink exact to="/">Home</NavLink>
 						<NavLink to="/about">About</NavLink>
 					<MobileExtraLinks onClick={toggle}>
-						<p>Portfolio</p>
+						<p>portfolio:</p>
 							{Object.entries(PortfolioData).map(([key, value]) => {
 								return (<NavLink key={key} to={"/portfolio/" + value.id}>{value.nav}</NavLink>)
 							})}

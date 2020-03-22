@@ -2,9 +2,16 @@ import React, { useEffect } from "react";
 import styled from "styled-components/macro";
 
 import NavGrid from "../components/NavGrid";
+import NavList from "../components/NavList";
 
 const Content = styled.div`
-  background: #f2f2f2;
+  width: 100%;
+  h2 {
+    text-align: center;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+  }
 `;
 
 const BodyContent = styled.div` 
@@ -12,7 +19,10 @@ const BodyContent = styled.div`
 `;
 
 const ImageGrid = styled.div ` 
-
+  img {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
 `;
 
 const BodyLinks = styled.div` 
@@ -21,9 +31,10 @@ const BodyLinks = styled.div`
 `;
 
 const Tags = styled.div ` 
-  display: flex;
+  display: inline-block;
+  margin-bottom: 50px;
   span {
-    margin-right: 5px;
+    margin: 0px 5px 0px 0px;
      &:after {
        content: ',';
      }
@@ -72,7 +83,7 @@ function PortfolioPage({ id, title, imgs, body, links, tags }) {
             })}
           </Tags>
       </BodyContent>
-
+        <NavList />
       <NavGrid />
 
     </Content>

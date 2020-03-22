@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const NavButton = styled.button `
   position: absolute;
-  top: 12px;
+  top: 17px;
   z-index: 1;
   right: 0;
   padding: 0;
@@ -15,7 +15,7 @@ const NavButton = styled.button `
   transition: all 0.2s linear;
     span {
       width: 27px;
-      height: 3px;
+      height: 2px;
       display: block;
       background: #000;
       margin: 0px 0px 6px 0px;
@@ -36,7 +36,7 @@ const NavButton = styled.button `
       }
       span:last-child {
         transform: rotate(-45deg);
-        margin: -6px 0px 0px 0px;
+        margin: -4px 0px 0px 0px;
       }
     }
     @media screen and (min-width: 768px) {

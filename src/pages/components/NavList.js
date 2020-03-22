@@ -3,7 +3,10 @@ import styled from 'styled-components/macro';
 import PortfolioData from "../../content/portfolio_content.json";
 
 const NavListContainer = styled.div`
-  display: flex;
+  display: none;
+    @media screen and (min-width: 768px) {
+      display: flex;
+    }
 `;
 
 
