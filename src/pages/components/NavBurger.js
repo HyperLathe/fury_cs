@@ -39,6 +39,9 @@ const NavButton = styled.button `
         margin: -6px 0px 0px 0px;
       }
     }
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
 `;
 
 function NavBurger(props) {

@@ -13,40 +13,74 @@ import LogoGraphic from "./img/logo.png";
 
 // --- styles ---
 
+
 const Main = styled.div`
-  max-width: 1440px;
-  width: 100%;
-  display: flex;
-  margin-left: 0;
   transition: all 0.4s ease;
-  position: relative;
+	padding: 0px 15px;
+	position: absolute;
+		@media screen and (min-width: 768px) {
+			margin: 0px auto;
+  		max-width: 955px;
+			padding-top: 120px;
+		}
     &.nav-open {
-      margin-left: -200px;
+			transform: translateX(-200px);
     }
 `;
 
 const Header = styled.header`
-  position: absolute;
-  top: 0;
   width: 100%;
   text-align: center;
   padding: 5px 0px 8px 0px;
   margin: 0;
+		@media screen and (min-width: 768px) {
+			border-bottom: 1px solid #b2b2b2;
+			height: 120px;
+			padding: 5px 0px 15px 0px
+		}
 `;
 
 const Nav = styled.nav`
-  background: #f3f3f3;
 	list-style-type: none;
 	position: absolute;
 	top: 0;
 	right: 0;
 	margin: 0px;
 	padding: 20px;
-	width: 150px;
-	margin-right: -190px;
-	transition: all 0.2s linear;
-	display: flex;
+	width: 200px;
+	height: 100%;
+	margin-right: -200px;
+	text-align: right;
+	transition: all 0.4s ease;
 	flex-direction: column;
+	transform: scaleX(0);
+	transform-origin: right;
+		&.nav-open {
+			transform: scaleX(1);
+			}
+	 a {
+			font-family: helvetica, arial, sans-serif;
+			text-transform: uppercase;
+			font-size: 0.8rem;
+			text-decoration: none;
+			color: #b4b4b4;
+				&:hover,
+				&.active {
+					color: #000;
+				}
+	 }
+	@media screen and (min-width: 768px) {
+		margin-right: 0;
+		flex-direction: row;
+		justify-content: flex-end;
+		height: 100px;
+		padding: 0px;
+		align-items: flex-end;
+		width: auto;
+			a:first-child {
+				margin-right: 10px;
+			}
+	}
 `;
 
 const Logo = styled.h1`
@@ -61,10 +95,19 @@ const Logo = styled.h1`
 			display: block;
 			margin: 0px auto;
 		}
+	@media screen and (min-width: 768px) {
+		width: 35%;
+		height: 100px;
+			a {
+				margin: 0px;
+				background-position: bottom left;
+				width: 100%;
+				height: 100%;
+			}
+	}
 `;
 
 const Content = styled.div`
-	margin-top: 60px;
 	width: 100%;
 	padding: 10px 0px;
 `;
@@ -94,7 +137,8 @@ const App = () => {
 				<Header onClick={closeNav}>
 					<NavBurger isOpen={isOpen} toggle={toggle} />
 					<Logo><NavLink exact to="/">Fury CS</NavLink></Logo>
-					<Nav onClick={toggle} >
+					{/* <Nav onClick={toggle} className={isOpen ? 'nav-open' : ''} style={isOpen ? {marginRight: 0 } : {}}> */}
+					<Nav onClick={toggle} className={isOpen ? 'nav-open' : ''}>
 						<NavLink exact to="/">Home</NavLink>
 						<NavLink to="/about">About</NavLink>
 					<MobileExtraLinks onClick={toggle}>

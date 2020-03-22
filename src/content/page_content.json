@@ -14,14 +14,11 @@
         "content1": "Creative Design Professional and Branding Specialist, based out of Seattle WA.",
         "headline2": "Contact",
         "content2": [
-          "<a href=\"mailto:jennifer@furycs.com\">Jennifer@furycs.com</a> ",
-          "<a href=\"https://www.linkedin.com/in/furycs/\" target=\"_blank\">LinkedIn</a>"
+          "<a href=\"mailto:jennifer@furycs.com\">Jennifer@furycs.com</a> <a href=\"https://www.linkedin.com/in/furycs/\" target=\"_blank\" rel=\"noopener noreferrer\">LinkedIn</a>"
         ],
         "headline3": "Other Projects",
         "content3": [
-          "<a href=\"https://www.roguealamode.com/\" target=\"_blank\">Rogue à la Mode</a> ",
-          "<a href=\"https://www.etsy.com/shop/RogueALaModeShop\" target=\"_blank\">Etsy</a>",
-          "<a href=\"https://www.spoonflower.com/profiles/rogue_a_la_mode\" target=\"_blank\">Spoonflower</a>"
+          "<a href=\"https://www.roguealamode.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Rogue à la Mode</a> <a href=\"https://www.etsy.com/shop/RogueALaModeShop\" target=\"_blank\" rel=\"noopener noreferrer\">Etsy</a> <a href=\"https://www.spoonflower.com/profiles/rogue_a_la_mode\" target=\"_blank\" rel=\"noopener noreferrer\">Spoonflower</a>"
         ]
       }
     ]
