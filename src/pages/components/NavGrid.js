@@ -13,11 +13,52 @@ const NavGridContainer = styled.div`
     a {
       width: 33.33%;
       justify-content: center;
-      padding: 4%;
+      padding: 2.5% 4%;
+      text-align: center;
+      position: relative;
         img {
-          max-width: 100%;
+          max-width: 100px;
+          width: 100%;
+        }
+      span {
+        position: absolute;
+        left: 0;
+        background: rgba(0,0,0,0.5);
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        height: 0;
+        overflow: hidden;
+        display: flex;
+        font-size: 1.3rem;
+        transition: all 0.3s ease;
+        padding: 0 10px;
+      }
+    &:hover {
+      span {
+        height: 100%;
+      }
+    }
+    }
+  @media screen and (min-width: 768px) {
+    height: auto;
+    a {
+      width: 25%;
+      padding: 1% 0;
+        img {
+          max-width: 120px;
         }
     }
+  }
+  @media screen and (min-width: 955px) {
+    max-width: 955px;
+    a {
+      width: 20%;
+    }
+  }
 `;
 
 
@@ -25,7 +66,7 @@ function NavGrid(props) {
   return (
     <NavGridContainer>
       {Object.entries(PortfolioData).map(([key, value]) => {
-        return (<NavLink key={key} to={"/portfolio/" + value.id}><img src={require('../../img/icons/' + value.id + '.png')} alt={value.title} /></NavLink>)
+        return (<NavLink key={key} to={"/portfolio/" + value.id}><img src={require('../../img/icons/' + value.id + '.png')} alt={value.title} /><span>{value.nav}</span></NavLink>)
       })}
     </NavGridContainer>
   );

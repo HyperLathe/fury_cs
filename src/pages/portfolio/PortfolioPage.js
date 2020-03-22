@@ -18,9 +18,10 @@ const BodyContent = styled.div`
   
 `;
 
-const ImageGrid = styled.div ` 
+const ImageGrid = styled.div `
+  text-align: center;
   img {
-    max-width: 100%;
+    width: 100%;
     margin-bottom: 30px;
   }
 `;

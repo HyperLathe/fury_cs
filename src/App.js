@@ -19,7 +19,9 @@ const Main = styled.div`
 	padding: 0px 15px;
 	position: absolute;
     &.nav-open {
-			transform: translateX(-200px);
+			/* transform: translateX(-200px); */
+			margin: 0px 0px 0px -200px;
+			padding-right: 215px;
 		}
 	
 		@media screen and (min-width: 768px) {
@@ -27,7 +29,9 @@ const Main = styled.div`
 			max-width: 955px;
 			position: relative;
 			&.nav-open {
-				transform: translateX(0);
+				/* transform: translateX(0); */
+				margin: 0px auto;
+				padding-right: 15px;
 			}
 		}
 `;
@@ -41,12 +45,24 @@ const Header = styled.header`
     position: fixed;
     left: 0;
     background: #fff;
+		transition: all 0.4s ease;
+		box-shadow: 0px 0px 5px #b2b2b2;
+		z-index: 1;
+    &.nav-open {
+			margin-left: -200px;
+		}
 		@media screen and (min-width: 768px) {
 			border-bottom: 1px solid #b2b2b2;
 			height: 120px;
 			padding: 5px 0px 15px 0px;
 			display: flex;
 			justify-content: space-between;
+			max-width: 955px;
+			position: relative;
+			box-shadow: none;
+			&.nav-open {
+				margin-left: 0;
+			}
 		}
 `;
 
@@ -84,7 +100,7 @@ const Nav = styled.nav`
 	@media screen and (min-width: 768px) {
 		margin-right: 0;
 		flex-direction: row;
-		justify-content: flex-end;
+		align-items: flex-end;
 		height: 100px;
 		padding: 0px;
 		width: auto;
@@ -104,7 +120,7 @@ const Logo = styled.h1`
 			background: url('${LogoGraphic}') center center no-repeat;
 			background-size: contain;
 			width: 60%;
-			height: 46px;
+			height: 43px;
 			display: block;
 			margin: 0px auto;
 		}
@@ -122,8 +138,12 @@ const Logo = styled.h1`
 
 const Content = styled.div`
 	width: 100%;
-	padding: 60px 0px 10px 0px;
-	height: 100vh;
+	padding: 70px 0px 10px 0px;
+	height: 100%;
+	@media screen and (min-width: 768px) {
+		height: 100%;
+		padding: 30px 0px 10px 0px;
+	}
 `;
 
 const MobileExtraLinks = styled.div `
@@ -141,6 +161,21 @@ const MobileExtraLinks = styled.div `
 	}
 `;
 
+const Footer = styled.footer `
+	margin: 10px 0;
+	text-align: center;
+		span {
+			font-size: 0.7rem;
+			color: #c6c6c6;
+		}
+		@media screen and (min-width: 768px) {
+			margin: 30px 0px 10px 0px;
+			text-align: left;
+		}
+
+`;
+
+
 
 
 // --- app ---
@@ -153,10 +188,12 @@ const App = () => {
 		return (isOpen ? setIsOpen(false) : '');
 	}
 
+	const displayYear = new Date().getFullYear();
+
 	return (
 		<BrowserRouter>
 			<Main className={isOpen ? 'nav-open' : ''}>
-				<Header onClick={closeNav}>
+				<Header onClick={closeNav} className={isOpen ? 'nav-open' : ''}>
 					<NavBurger isOpen={isOpen} toggle={toggle} />
 					<Logo><NavLink exact to="/">Fury CS</NavLink></Logo>
 					<Nav onClick={toggle} className={isOpen ? 'nav-open' : ''}>
@@ -177,6 +214,10 @@ const App = () => {
 					{Object.entries(PortfolioData).map(([key, value]) => {
 						return (<Route exact path={"/portfolio/" + value.id} key={key} render={() => <PortfolioPage {...value} />} />)
 					})}
+
+					<Footer>
+					<span>© {displayYear} Fury Creative Services. All rights reserved.</span>
+					</Footer>
 
 				</Content>
 			</Main>
