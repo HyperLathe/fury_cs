@@ -15,7 +15,8 @@ const NavGridContainer = styled.div`
       width: 33.33%;
       justify-content: center;
         img {
-          max-width: 80px;
+          width: 80px;
+          height: 80px;
         }
     }
 `;

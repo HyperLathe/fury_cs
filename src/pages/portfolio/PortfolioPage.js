@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components/macro";
 
 import NavGrid from "../components/NavGrid";
@@ -38,6 +38,10 @@ const Tags = styled.div `
 
 function PortfolioPage({ id, title, imgs, body, links, tags }) {
   console.log(id, imgs);
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const imageArray = [...Array(imgs)].map((_, i) => {
     return (<img src={require("../../img/portfolio_imgs/" + id + "/" + (i + 1) + ".jpg" )} alt="test" />);

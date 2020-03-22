@@ -18,14 +18,18 @@ const Main = styled.div`
   transition: all 0.4s ease;
 	padding: 0px 15px;
 	position: absolute;
-		@media screen and (min-width: 768px) {
-			margin: 0px auto;
-  		max-width: 955px;
-			padding-top: 120px;
-		}
     &.nav-open {
 			transform: translateX(-200px);
-    }
+		}
+	
+		@media screen and (min-width: 768px) {
+			margin: 0px auto;
+			max-width: 955px;
+			position: relative;
+			&.nav-open {
+				transform: translateX(0);
+			}
+		}
 `;
 
 const Header = styled.header`
@@ -36,7 +40,9 @@ const Header = styled.header`
 		@media screen and (min-width: 768px) {
 			border-bottom: 1px solid #b2b2b2;
 			height: 120px;
-			padding: 5px 0px 15px 0px
+			padding: 5px 0px 15px 0px;
+			display: flex;
+			justify-content: space-between;
 		}
 `;
 
@@ -75,9 +81,9 @@ const Nav = styled.nav`
 		justify-content: flex-end;
 		height: 100px;
 		padding: 0px;
-		align-items: flex-end;
 		width: auto;
 		transform: scaleX(1);
+		position: relative;
 			a:first-child {
 				margin-right: 10px;
 			}
@@ -138,7 +144,6 @@ const App = () => {
 				<Header onClick={closeNav}>
 					<NavBurger isOpen={isOpen} toggle={toggle} />
 					<Logo><NavLink exact to="/">Fury CS</NavLink></Logo>
-					{/* <Nav onClick={toggle} className={isOpen ? 'nav-open' : ''} style={isOpen ? {marginRight: 0 } : {}}> */}
 					<Nav onClick={toggle} className={isOpen ? 'nav-open' : ''}>
 						<NavLink exact to="/">Home</NavLink>
 						<NavLink to="/about">About</NavLink>
