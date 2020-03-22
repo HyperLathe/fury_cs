@@ -77,6 +77,7 @@ const Nav = styled.nav`
 		padding: 0px;
 		align-items: flex-end;
 		width: auto;
+		transform: scaleX(1);
 			a:first-child {
 				margin-right: 10px;
 			}

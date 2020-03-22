@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink} from "react-router-dom";
 import styled from 'styled-components/macro';
 import PortfolioData from "../../content/portfolio_content.json";
 
@@ -24,7 +25,7 @@ function NavGrid(props) {
   return (
     <NavGridContainer>
       {Object.entries(PortfolioData).map(([key, value]) => {
-        return (<a key={key} href={"/portfolio/" + value.id}><img src={require('../../img/icons/' + value.id + '.jpg')} alt={value.title} /></a>)
+        return (<NavLink key={key} to={"/portfolio/" + value.id}><img src={require('../../img/icons/' + value.id + '.jpg')} alt={value.title} /></NavLink>)
       })}
     </NavGridContainer>
   );
