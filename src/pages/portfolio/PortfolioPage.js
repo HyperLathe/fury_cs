@@ -12,10 +12,20 @@ const Content = styled.div`
     text-transform: uppercase;
     font-size: 1.3rem;
   }
+  @media screen and (min-width: 768px) {
+    h2 {
+      text-align: left;
+    }
+  }
 `;
 
-const BodyContent = styled.div` 
-  
+const MasterContent = styled.div `
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 const ImageGrid = styled.div `
@@ -23,6 +33,25 @@ const ImageGrid = styled.div `
   img {
     width: 100%;
     margin-bottom: 30px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 50%;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    img {
+      width: 33.3%;
+      padding: 2.5%;
+      align-self: flex-start;
+    }
+  }
+`;
+
+const BodyContent = styled.div` 
+  
+  @media screen and (min-width: 768px) {
+    width: 25%;
   }
 `;
 
@@ -61,15 +90,13 @@ function PortfolioPage({ id, title, imgs, body, links, tags }) {
 
   return (
     <Content>
-      <h2>{title}</h2>
-
-      <ImageGrid>
-      {imageArray}
-      </ImageGrid>
+      <MasterContent>
+      <ImageGrid>{imageArray}</ImageGrid>
 
       <BodyContent>
+      <h2>{title}</h2>
         {body.map((value) => {
-          return <p dangerouslySetInnerHTML={{ __html: value }} />
+          return <p dangerouslySetInnerHTML={{ __html: value }} ></p>
         })}
         {(links) ?
           <BodyLinks>
@@ -83,8 +110,12 @@ function PortfolioPage({ id, title, imgs, body, links, tags }) {
              return <span dangerouslySetInnerHTML={{ __html: value }} /> 
             })}
           </Tags>
+
       </BodyContent>
-        <NavList />
+
+      <NavList />
+      </MasterContent>
+
       <NavGrid />
 
     </Content>

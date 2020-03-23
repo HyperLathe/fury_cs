@@ -66,7 +66,7 @@ function NavGrid(props) {
   return (
     <NavGridContainer>
       {Object.entries(PortfolioData).map(([key, value]) => {
-        return (<NavLink key={key} to={"/portfolio/" + value.id}><img src={require('../../img/icons/' + value.id + '.png')} alt={value.title} /><span>{value.nav}</span></NavLink>)
+        return (<NavLink key={key} to={'/portfolio/' + value.id}><img src={require('../../img/icons/' + value.id + '.png')} alt={value.title} /><span>{value.nav}</span></NavLink>)
       })}
     </NavGridContainer>
   );

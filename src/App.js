@@ -91,7 +91,7 @@ const Nav = styled.nav`
 			font-size: 0.8rem;
 			text-decoration: none;
 			color: #b4b4b4;
-			margin-bottom: 5px;
+			margin-bottom: 7px;
 				&:hover,
 				&.active {
 					color: #000;
@@ -146,22 +146,19 @@ const Content = styled.div`
 	}
 `;
 
-const MobileExtraLinks = styled.div `
+const MobileExtraLinks = styled.div`
 	display: flex;
 	flex-direction: column;
 	p {
 		margin: 15px 0px 7px 0px;
 		font-size: 0.8rem;
 	}
-	a {
-		margin-bottom: 5px;
-	}
 		@media screen and (min-width: 768px) {
 			display: none;	
 	}
 `;
 
-const Footer = styled.footer `
+const Footer = styled.footer`
 	margin: 10px 0;
 	text-align: center;
 		span {
@@ -199,8 +196,8 @@ const App = () => {
 					<Nav onClick={toggle} className={isOpen ? 'nav-open' : ''}>
 						<NavLink exact to="/">Home</NavLink>
 						<NavLink to="/about">About</NavLink>
-					<MobileExtraLinks onClick={toggle}>
-						<p>portfolio:</p>
+						<MobileExtraLinks onClick={toggle}>
+							<p>portfolio:</p>
 							{Object.entries(PortfolioData).map(([key, value]) => {
 								return (<NavLink key={key} to={"/portfolio/" + value.id}>{value.nav}</NavLink>)
 							})}
@@ -216,7 +213,7 @@ const App = () => {
 					})}
 
 					<Footer>
-					<span>© {displayYear} Fury Creative Services. All rights reserved.</span>
+						<span>© {displayYear} Fury Creative Services. All rights reserved.</span>
 					</Footer>
 
 				</Content>
