@@ -17,7 +17,7 @@ function NavList(props) {
     <NavListContainer>
       <h2>Portfolio</h2>
       {Object.entries(PortfolioData).map(([key, value]) => {
-        return (<NavLink key={key} href={"/portfolio/" + value.id}>{value.nav}</NavLink>)
+        return (<NavLink key={key} to={"/portfolio/" + value.id}>{value.nav}</NavLink>)
       })}
     </NavListContainer>
   );
