@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink} from "react-router-dom";
 import styled from 'styled-components/macro';
 import PortfolioData from "../../content/portfolio_content.json";
 
@@ -16,7 +17,7 @@ function NavList(props) {
     <NavListContainer>
       <h2>Portfolio</h2>
       {Object.entries(PortfolioData).map(([key, value]) => {
-        return (<a key={key} href={"/portfolio/" + value.id}>{value.nav}</a>)
+        return (<NavLink key={key} href={"/portfolio/" + value.id}>{value.nav}</NavLink>)
       })}
     </NavListContainer>
   );
