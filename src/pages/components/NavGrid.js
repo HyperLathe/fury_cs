@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink} from "react-router-dom";
 import styled from 'styled-components/macro';
 import PortfolioData from "../../content/portfolio_content.json";
@@ -63,10 +63,15 @@ const NavGridContainer = styled.div`
 
 
 function NavGrid(props) {
+
+  const goNav = () => {
+    window.scrollTo(0, 0)
+  }
+
   return (
     <NavGridContainer>
       {Object.entries(PortfolioData).map(([key, value]) => {
-        return (<NavLink key={key} to={'/portfolio/' + value.id}><img src={require('../../img/icons/' + value.id + '.png')} alt={value.title} /><span>{value.nav}</span></NavLink>)
+        return (<NavLink onClick={goNav} key={key} to={'/portfolio/' + value.id}><img src={require('../../img/icons/' + value.id + '.png')} alt={value.title} /><span>{value.nav}</span></NavLink>)
       })}
     </NavGridContainer>
   );
