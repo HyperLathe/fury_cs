@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components/macro";
 
 import NavGrid from "../components/NavGrid";
 import NavList from "../components/NavList";
+import Modal from "../components/Modal";
 
 const Content = styled.div`
   width: 100%;
@@ -76,17 +77,25 @@ const Tags = styled.div `
 
 
 
-
 function PortfolioPage({ id, title, imgs, body, links, tags }) {
-  console.log(id, imgs);
+
+  const [imageRef, setImageRef] = useState(0);
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+  
+  const openModal = (i) => {
+    setModal(true);
+    setImageRef(i);
+  }
 
   const imageArray = [...Array(imgs)].map((_, i) => {
-    return (<img src={require("../../img/portfolio_imgs/" + id + "/" + (i + 1) + ".jpg" )} alt="test" />);
+    return (<img src={require("../../img/portfolio_imgs/" + id + "/" + (i + 1) + ".jpg" )} alt="test" onClick={() => openModal(i)} key={i} />);
   });
+
+
 
   return (
     <Content>
@@ -117,6 +126,8 @@ function PortfolioPage({ id, title, imgs, body, links, tags }) {
       </MasterContent>
 
       <NavGrid />
+      
+      {modal ? <Modal id={id} imageRef={imageRef} /> : null}
 
     </Content>
   );

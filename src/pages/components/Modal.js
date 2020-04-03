@@ -1,9 +1,7 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
 import styled from 'styled-components/macro';
-import PortfolioData from "../../content/portfolio_content.json";
 
-const NavGridContainer = styled.div`
+const ModalContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -67,19 +65,43 @@ const NavGridContainer = styled.div`
 `;
 
 
-function NavGrid(props) {
+function Modal({id, imgs, imageRef}) {
 
-  const goNav = () => {
-    window.scrollTo(0, 0)
-  }
+  // const [currentImg, setCurrentImg] = useState(imageRef);
+
+  // const imageArray = [...Array(imgs)].map((_, i) => {
+  //   return (<img src={require("../../img/portfolio_imgs/" + id + "/" + (i + 1) + ".jpg" )} alt="test" />);
+  // });
+
+  // const prev = () => {
+  //   setCurrentImg(imageRef--);
+  //   console.log(imageRef);
+  // }
+
+  // const next = () => { 
+  //   setCurrentImg(imageRef++);
+  //   console.log(imageRef);
+  // }
+
+  console.log(imageRef);
 
   return (
-    <NavGridContainer>
-      {Object.entries(PortfolioData).map(([key, value]) => {
-        return (<NavLink onClick={goNav} key={key} to={'/portfolio/' + value.id}><img src={require('../../img/icons/' + value.id + '.png')} alt={value.title} /><span>{value.nav}</span></NavLink>)
-      })}
-    </NavGridContainer>
+    <ModalContainer>
+      {/* <button onClick={prev} /> */}
+      <img src={require("../../img/portfolio_imgs/" + id + "/" + (imageRef + 1) + ".jpg")} alt={id} />
+      {/* <button onClick={next} /> */}
+    </ModalContainer>
   );
 }
 
-export default NavGrid;
+export default Modal;
+
+
+// {Object.entries(PortfolioData).map(([key, value]) => {
+//   return (
+//     <div key={key}>
+//       {/* <img src={require('../../img/icons/' + value.id + '.png')} alt={value.title} /> */}
+//       {imageArray}
+//       <span>{value.nav}</span>
+//     </div>)
+// })}
