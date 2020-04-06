@@ -23,6 +23,21 @@ const Main = styled.div`
 			margin: 0px 0px 0px -200px;
 			padding-right: 215px;
 		}
+		&.filter-blur {
+			position: fixed;
+				header,
+				[class*='ImageGrid'],
+				[class*='BodyContent'],
+				[class*='NavListContainer'],
+				[class*='NavGrid'],
+				[class*='Footer'] {
+					filter: blur(2px);
+					opacity: 0.3;
+				}
+				@media screen and (min-width: 768px) {
+					position: relative;
+				}
+		}
 	
 		@media screen and (min-width: 768px) {
 			margin: 0px auto;
@@ -185,11 +200,16 @@ const App = () => {
 		return (isOpen ? setIsOpen(false) : '');
 	}
 
+	// const [carouselVisible, setCarouselVisible] = useState(false);
+
+
+  const [carousel, setCarousel] = useState(false);
+
 	const displayYear = new Date().getFullYear();
 
 	return (
 		<BrowserRouter>
-			<Main className={isOpen ? 'nav-open' : ''}>
+			<Main className={(isOpen ? 'nav-open' : '') + (carousel ? 'filter-blur' : '')} >
 				<Header onClick={closeNav} className={isOpen ? 'nav-open' : ''}>
 					<NavBurger isOpen={isOpen} toggle={toggle} />
 					<Logo><NavLink exact to="/">Fury CS</NavLink></Logo>
@@ -209,7 +229,7 @@ const App = () => {
 					<Route exact path="/about" component={About} />
 
 					{Object.entries(PortfolioData).map(([key, value]) => {
-						return (<Route exact path={"/portfolio/" + value.id} key={key} render={() => <PortfolioPage {...value} />} />)
+						return (<Route exact path={"/portfolio/" + value.id} key={key} render={() => <PortfolioPage {...value} carousel={carousel} setCarousel={setCarousel} />} />)
 					})}
 
 					<Footer>

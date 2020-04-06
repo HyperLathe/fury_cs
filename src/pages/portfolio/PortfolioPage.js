@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 
 import NavGrid from "../components/NavGrid";
 import NavList from "../components/NavList";
-import Modal from "../components/Modal";
+import Carousel from "../components/Carousel";
 
 const Content = styled.div`
   width: 100%;
@@ -13,9 +13,17 @@ const Content = styled.div`
     text-transform: uppercase;
     font-size: 1.3rem;
   }
+  h3 {
+    margin-bottom: 5px;
+    font-weight: normal;
+  }
+  p {
+    color: #787878;
+  }
   @media screen and (min-width: 768px) {
     h2 {
       text-align: left;
+      font-size: 0.8rem;
     }
   }
 `;
@@ -49,11 +57,27 @@ const ImageGrid = styled.div `
   }
 `;
 
-const BodyContent = styled.div` 
-  
+const BodyContent = styled.div`
+a {
+  color: #d76b65;
+  text-decoration: none;
+}
   @media screen and (min-width: 768px) {
     width: 25%;
+    padding-right: 15px;
+    font-size: 0.8rem;
   }
+`;
+
+const CarouselOverlay = styled.div `
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
 `;
 
 const BodyLinks = styled.div` 
@@ -73,26 +97,52 @@ const Tags = styled.div `
        content: '';
      }
   }
+  @media screen and (min-width: 768px) {
+    margin-top: 30px;
+    border-top: 1px solid #b2b2b2;
+    padding-top: 10px;
+  }
+`;
+
+const CloseButton = styled.button `
+  position: absolute;
+  z-index: 11;
+  right: 0;
+  top: 0;
+  margin: 5px;
+  width: 50px;
+  height: 50px;
+  font-size: 26px;
+  line-height: 0px;
+  padding: 0;
+  -webkit-text-stroke-width: 1px;
+  border: 0;
+  background: #fff;
+  border-radius: 0;
+  @media screen and (min-width: 768px) {
+    right: 15vw;
+    top: 15vh;
+  }
 `;
 
 
 
-function PortfolioPage({ id, title, imgs, body, links, tags }) {
+
+function PortfolioPage({ id, title, imgs, body, links, tags, carousel, setCarousel }) {
 
   const [imageRef, setImageRef] = useState(0);
-  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
   
-  const openModal = (i) => {
-    setModal(true);
+  const openCarousel = (i) => {
+    setCarousel(true);
     setImageRef(i);
-  }
+  };
 
   const imageArray = [...Array(imgs)].map((_, i) => {
-    return (<img src={require("../../img/portfolio_imgs/" + id + "/" + (i + 1) + ".jpg" )} alt="test" onClick={() => openModal(i)} key={i} />);
+    return (<img src={require("../../img/portfolio_imgs/" + id + "/" + (i + 1) + ".jpg" )} alt={title} onClick={() => openCarousel(i)} key={i} />);
   });
 
 
@@ -105,18 +155,18 @@ function PortfolioPage({ id, title, imgs, body, links, tags }) {
       <BodyContent>
       <h2>{title}</h2>
         {body.map((value) => {
-          return <p dangerouslySetInnerHTML={{ __html: value }} ></p>
+          return <p dangerouslySetInnerHTML={{ __html: value }} key={value} ></p>
         })}
         {(links) ?
           <BodyLinks>
             <h3>Websites</h3>
             {links.map((value) => {
-              return <a href={value.link} target="_blank" rel="noopener noreferrer">{value.label}</a>
+              return <a href={value.link} target="_blank" rel="noopener noreferrer" key={value.label}>{value.label}</a>
             })}
           </BodyLinks> : ''}
           <Tags>
           {tags.map((value) => {
-             return <span dangerouslySetInnerHTML={{ __html: value }} /> 
+             return <span dangerouslySetInnerHTML={{ __html: value }} key={value} /> 
             })}
           </Tags>
 
@@ -127,7 +177,12 @@ function PortfolioPage({ id, title, imgs, body, links, tags }) {
 
       <NavGrid />
       
-      {modal ? <Modal id={id} imageRef={imageRef} /> : null}
+      {carousel ?
+      <CarouselOverlay>
+        <CloseButton onClick={() => setCarousel(false)} aria-label="Close">&#9587;</CloseButton>
+        <Carousel id={id} imageRef={imageRef} imgs={imgs} title={title}  setCarousel={setCarousel} />
+      </CarouselOverlay>
+      : null}
 
     </Content>
   );

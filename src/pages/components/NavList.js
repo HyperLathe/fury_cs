@@ -8,6 +8,15 @@ const NavListContainer = styled.div`
     @media screen and (min-width: 768px) {
       display: flex;
       flex-direction: column;
+        a {
+          font-size: 0.8rem;
+          margin-bottom: 5px;
+          text-decoration: none;
+          color: #b4b4b4;
+            &.active {
+              color: #d76b65;
+            }
+        }
     }
 `;
 
