@@ -77,7 +77,8 @@ const CarouselControls = styled.div `
 function Carousel({id, imgs, imageRef, title, setCarousel}) {
 
   const [currentImg, setCurrentImg] = useState(imageRef);
-  const ref = useRef();
+  const refp = useRef();
+  const refn = useRef();
 
   const useOutsideClick = (ref, callback) => {
     const handleClick = e => {
@@ -93,9 +94,10 @@ function Carousel({id, imgs, imageRef, title, setCarousel}) {
     });
   };
 
-  useOutsideClick(ref, () => {
+  useOutsideClick(refp, refn, () => {
     setCarousel(false);
   });
+
 
 
   const CarouselArray = [...Array(imgs)].map((_, i) => {
@@ -127,8 +129,8 @@ function Carousel({id, imgs, imageRef, title, setCarousel}) {
           {CarouselArray}
       </CarouselImages>
       <CarouselControls>
-        <button onClick={prev} aria-label="Previous image"  ref={ref}>&#10132;</button>
-        <button onClick={next} aria-label="Next image"  ref={ref}>&#10132;</button>
+        <button onClick={prev} aria-label="Previous image"  refp={refp}>&#10132;</button>
+        <button onClick={next} aria-label="Next image"  refn={refn}>&#10132;</button>
       </CarouselControls>
     </CarouselContainer>
   );
