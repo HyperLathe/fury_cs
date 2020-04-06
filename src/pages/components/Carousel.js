@@ -31,7 +31,7 @@ const CarouselImages = styled.div `
 const CarouselControls = styled.div `
   position: absolute;
   width: 100%;
-  height: calc(100% - 60px);
+  height: 60px;
   bottom: 0;
     button {
       position: absolute;
@@ -61,8 +61,8 @@ const CarouselControls = styled.div `
   @media screen and (min-width: 768px) {
     max-width: calc(60vw + 150px);
     left: calc((40vw - 164px) / 2);
-    height: 50vh;
     top: 0;
+    margin-top: 47vh;
       button:first-child:hover {
         transform: scale(1.3) rotate(180deg);
       }
@@ -77,8 +77,7 @@ const CarouselControls = styled.div `
 function Carousel({id, imgs, imageRef, title, setCarousel}) {
 
   const [currentImg, setCurrentImg] = useState(imageRef);
-  const refp = useRef();
-  const refn = useRef();
+  const ref = useRef();
 
   const useOutsideClick = (ref, callback) => {
     const handleClick = e => {
@@ -94,11 +93,9 @@ function Carousel({id, imgs, imageRef, title, setCarousel}) {
     });
   };
 
-  useOutsideClick(refp, refn, () => {
+  useOutsideClick(ref, () => {
     setCarousel(false);
   });
-
-
 
   const CarouselArray = [...Array(imgs)].map((_, i) => {
     return (
@@ -128,9 +125,9 @@ function Carousel({id, imgs, imageRef, title, setCarousel}) {
       <CarouselImages>
           {CarouselArray}
       </CarouselImages>
-      <CarouselControls>
-        <button onClick={prev} aria-label="Previous image"  refp={refp}>&#10132;</button>
-        <button onClick={next} aria-label="Next image"  refn={refn}>&#10132;</button>
+      <CarouselControls ref={ref}>
+        <button onClick={prev} aria-label="Previous image" >&#10132;</button>
+        <button onClick={next} aria-label="Next image" >&#10132;</button>
       </CarouselControls>
     </CarouselContainer>
   );
