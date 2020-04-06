@@ -27,6 +27,9 @@ const Content = styled.div `
   a {
     text-decoration: none;
     color: #d76b65;
+      &:hover {
+        text-decoration: underline;
+      }
     @media screen and (min-width: 768px) {
       font-size: 0.8rem;
     }

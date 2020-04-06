@@ -13,6 +13,9 @@ const NavListContainer = styled.div`
           margin-bottom: 5px;
           text-decoration: none;
           color: #b4b4b4;
+            &:hover {
+              color: #787878;
+            }
             &.active {
               color: #d76b65;
             }

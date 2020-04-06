@@ -42,6 +42,7 @@ const ImageGrid = styled.div `
   img {
     width: 100%;
     margin-bottom: 30px;
+    cursor: pointer;
   }
   @media screen and (min-width: 768px) {
     width: 50%;
