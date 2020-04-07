@@ -89,8 +89,10 @@ const BodyLinks = styled.div`
 const Tags = styled.div ` 
   display: inline-block;
   margin-bottom: 50px;
+  width: 100%;
   span {
     margin: 0px 5px 0px 0px;
+    display: inline-block;
      &:after {
        content: ',';
      }
