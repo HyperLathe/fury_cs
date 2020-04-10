@@ -9,7 +9,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import PortfolioPage from "./pages/portfolio/PortfolioPage";
 import NavBurger from "./pages/components/NavBurger";
-import LogoGraphic from "./img/logo.png";
+import LogoGraphic from "./img/logo.svg";
 
 // --- styles ---
 

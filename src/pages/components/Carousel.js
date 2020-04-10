@@ -19,6 +19,7 @@ const CarouselImages = styled.div `
       transition: all 0.3s linear;
       max-height: 90%;
       max-width: calc(100vw - 30px);
+      box-shadow: 0px 0px 30px 30px #fff;
         &.active {
           opacity: 1;
         }

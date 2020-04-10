@@ -35,6 +35,7 @@ const NavGridContainer = styled.div`
         font-size: 1.3rem;
         transition: all 0.3s ease;
         padding: 0 10px;
+        font-size: 1rem;
       }
       &:hover,
       &.active {
@@ -50,6 +51,9 @@ const NavGridContainer = styled.div`
       padding: 1% 0;
         img {
           max-width: 120px;
+        }
+        span {
+          font-size: 1.5rem;
         }
       &.active {
         span {
@@ -76,7 +80,7 @@ function NavGrid(props) {
   return (
     <NavGridContainer>
       {Object.entries(PortfolioData).map(([key, value]) => {
-        return (<NavLink onClick={goNav} key={key} to={'/portfolio/' + value.id}><img src={require('../../img/icons/' + value.id + '.png')} alt={value.title} /><span>{value.nav}</span></NavLink>)
+        return (<NavLink onClick={goNav} key={key} to={'/portfolio/' + value.id}><img src={require('../../img/icons/' + value.id + '.svg')} alt={value.title} /><span>{value.nav}</span></NavLink>)
       })}
     </NavGridContainer>
   );

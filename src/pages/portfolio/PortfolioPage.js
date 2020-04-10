@@ -180,12 +180,12 @@ function PortfolioPage({ id, title, imgs, body, links, tags, carousel, setCarous
 
       <NavGrid />
       
-      {carousel ?
+      {carousel &&
       <CarouselOverlay>
         <CloseButton onClick={() => setCarousel(false)} aria-label="Close">&#9587;</CloseButton>
         <Carousel id={id} imageRef={imageRef} imgs={imgs} title={title}  setCarousel={setCarousel} />
       </CarouselOverlay>
-      : null}
+      }
 
     </Content>
   );
