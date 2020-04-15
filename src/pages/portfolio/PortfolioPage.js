@@ -32,6 +32,9 @@ const MasterContent = styled.div `
   width: 100%;
   display: flex;
   flex-direction: column-reverse;
+  border-bottom: 1px solid #b2b2b2;
+  padding-bottom: 10px;
+  margin-bottom: 40px;
   @media screen and (min-width: 768px) {
     flex-direction: row;
   }
