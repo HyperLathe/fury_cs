@@ -48,9 +48,6 @@ const ImageGrid = styled.div `
     cursor: pointer;
     transition: all 0.2s;
     transition-timing-function: cubic-bezier(.36,0,.67,2);
-      &:hover {
-        transform: scale(1.15);
-      }
   }
   @media screen and (min-width: 768px) {
     width: 50%;
@@ -62,6 +59,9 @@ const ImageGrid = styled.div `
       width: 33.3%;
       padding: 2.5%;
       align-self: flex-start;
+        &:hover {
+          transform: scale(1.15);
+        }
     }
   }
 `;
