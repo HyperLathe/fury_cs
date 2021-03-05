@@ -100,7 +100,7 @@ function Carousel({id, imgs, imageRef, title, setCarousel}) {
 
   const CarouselArray = [...Array(imgs)].map((_, i) => {
     return (
-    <img src={require("../../img/portfolio_imgs/" + id + "/" + (i + 1) + ".jpg" )} alt={title} className={(i === currentImg) ? "active" : null} />
+    <img src={require("../../img/portfolio_imgs/" + id + "/" + (i + 1) + ".jpg" )} key={i} alt={title} className={(i === currentImg) ? "active" : null} />
     );
   });
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components/macro";
 import NavGrid from "./components/NavGrid";
 
@@ -13,9 +13,19 @@ const PageContent = styled.div `
 
 
 function Home(props) {
+
+  const [gridCSS, setgridCSS] = useState(false);
+   
+
+  useEffect(() => {
+    if (props.isHome) {
+      console.log('yes');
+    }
+  });
+
   return (
     <PageContent>
-      <NavGrid />
+      <NavGrid gridCSS={gridCSS} setgridCSS={setgridCSS} />
     </PageContent>
 
   );

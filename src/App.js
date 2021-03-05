@@ -194,16 +194,15 @@ const Footer = styled.footer`
 
 const App = () => {
 
+
 	const [isOpen, setIsOpen] = useState(false);
 	const toggle = () => setIsOpen(!isOpen);
 	const closeNav = () => {
 		return (isOpen ? setIsOpen(false) : '');
 	}
 
-	// const [carouselVisible, setCarouselVisible] = useState(false);
-
-
-  const [carousel, setCarousel] = useState(false);
+	const [isHome, setHome] = useState(false);
+	const [carousel, setCarousel] = useState(false);
 
 	const displayYear = new Date().getFullYear();
 
@@ -225,7 +224,7 @@ const App = () => {
 					</Nav>
 				</Header>
 				<Content onClick={closeNav}>
-					<Route exact path="/" component={Home} />
+					<Route exact path="/" isHome={isHome} setHome={setHome} component={Home} />
 					<Route exact path="/about" component={About} />
 
 					{Object.entries(PortfolioData).map(([key, value]) => {

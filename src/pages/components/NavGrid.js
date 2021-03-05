@@ -19,6 +19,10 @@ const NavGridContainer = styled.div`
         img {
           max-width: 100px;
           width: 100%;
+          @keyframes fadein {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
         }
       span {
         position: absolute;
@@ -80,7 +84,7 @@ function NavGrid(props) {
   return (
     <NavGridContainer>
       {Object.entries(PortfolioData).map(([key, value]) => {
-        return (<NavLink onClick={goNav} key={key} to={'/portfolio/' + value.id}><img src={require('../../img/icons/' + value.id + '.svg')} alt={value.title} /><span>{value.nav}</span></NavLink>)
+        return (<NavLink onClick={goNav} key={key} to={'/portfolio/' + value.id}><img src={require('../../img/icons/' + value.id + '.svg')} alt={value.title} style={{animationDuration: (key / 6)}} /><span>{value.nav}</span></NavLink>)
       })}
     </NavGridContainer>
   );

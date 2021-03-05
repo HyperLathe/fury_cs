@@ -50,8 +50,7 @@ const ImageGrid = styled.div `
     transition-timing-function: cubic-bezier(.36,0,.67,2);
   }
   @media screen and (min-width: 768px) {
-    width: 50%;
-    width: 50%;
+    width: 57%;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -73,7 +72,7 @@ a {
 }
   @media screen and (min-width: 768px) {
     width: 25%;
-    padding-right: 15px;
+    padding: 0px 20px 0px 15px;
     font-size: 0.8rem;
   }
 `;
